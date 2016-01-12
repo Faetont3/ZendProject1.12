@@ -1,0 +1,28 @@
+<br /><br />
+<div id="view-content">
+    <p>View script for controller <b>Listar</b> and script/action name <b>index</b></p>
+    <h1>Hello2</h1>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>LOGIN</th>
+            <th>SENHA</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($this->lista as $rows) {
+            echo '<tr>';
+            echo '<td>' . $rows->getId() . '</td>';
+            echo '<td>' . $rows->getLogin() . '</td>';
+            echo '<td>' . $rows->getSenha() . '</td>';
+            echo '<td><a href=' . $this->baseURL() . '/remover/index?dado=' . $rows->getId() . '>Remover</a></td>';
+            echo '<td><a href=' . $this->baseURL() . '/atualizar/index?dado=' . $rows->getId() . '>Alterar</a></td>';
+            echo '</tr>';
+        }
+        ?>
+    </tbody>
+</table>
