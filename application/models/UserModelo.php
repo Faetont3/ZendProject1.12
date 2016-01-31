@@ -1,10 +1,13 @@
 <?php
 
 class Application_Model_UserModelo {
-
-    protected $_login;
+    protected $_nome;
+    protected $_email;
     protected $_senha;
     protected $_id;
+    protected $_role;
+    protected $_ativacao;
+    protected $_status;
 
     public function __construct(array $options = null) {
         if (is_array($options)) {
@@ -27,27 +30,23 @@ class Application_Model_UserModelo {
         }
         return $this->$method();
     }
-
-    public function setOptions(array $options) {
-        $methods = get_class_methods($this);
-        foreach ($options as $key => $value) {
-            $method = 'set' . ucfirst($key);
-            if (in_array($method, $methods)) {
-                $this->$method($value);
-            }
-        }
+    
+    public function setNome($text) {
+        $this->_nome = (string) $text;
         return $this;
     }
 
-//apagar aqui
+    public function getNome() {
+        return $this->_nome;
+    }
 
-    public function setLogin($text) {
-        $this->_login = (string) $text;
+    public function setEmail($text) {
+        $this->_email = (string) $text;
         return $this;
     }
 
-    public function getLogin() {
-        return $this->_login;
+    public function getEmail() {
+        return $this->_email;
     }
 
     public function setSenha($text) {
@@ -67,5 +66,31 @@ class Application_Model_UserModelo {
     public function getId() {
         return $this->_id;
     }
+    
+    public function setRole($text) {
+        $this->_role = (string) $text;
+        return $this;
+    }
 
+    public function getRole() {
+        return $this->_role;
+    }
+    
+    public function setAtivacao($text) {
+        $this->_ativacao = (string) $text;
+        return $this;
+    }
+
+    public function getAtivacao() {
+        return $this->_ativacao;
+    }
+    
+    public function setStatus($text) {
+        $this->_status = (string) $text;
+        return $this;
+    }
+
+    public function getStatus() {
+        return $this->_status;
+    }
 }

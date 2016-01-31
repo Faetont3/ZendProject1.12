@@ -1,0 +1,68 @@
+<?php
+$auth = Zend_Auth::getInstance();
+$result = $auth->getStorage()->read();
+?>
+
+<div class = "content"><!-- Form Name -->
+    <form class="form-horizontal" method="POST" action="<?= $this->baseUrl() . '/atualizar/atualizar'; ?>">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Editar informações</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="nome">Nome</label>  
+                <div class="col-md-4">
+                    <input id="nome" name="nome" type="text" placeholder="Nome" value="<?= $this->user->getNome(); ?>" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Prepended text-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input id="email" name="email" class="form-control" placeholder="Email" value="<?= $this->user->getEmail(); ?>" type="text">
+                    </div>
+
+                </div>
+            </div>
+
+            <?php
+            if ($result->role == 'admin') {
+                ?>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="role">Role</label>
+                    <div class="col-md-4">
+                        <select class="form-control" id="role" name="role">
+                            <option><?= $this->user->getRole(); ?></option>
+                            <option><?php
+                                if ($this->user->getRole() == 'admin') {
+                                    echo 'usuario';
+                                } else
+                                    echo 'admin';
+                                ?>
+                            </option>                            
+                        </select>
+                    </div>
+                </div>
+            <?php } ?>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id">Editar</label>
+                <div class="col-md-8">                    
+                    <input type="submit" name = "salvar" class="btn btn-success" value="Editar">
+                </div>
+            </div>
+
+        </fieldset>
+        
+        <INPUT TYPE="hidden" NAME="id" VALUE="<?= $this->user->getId(); ?>">
+    </form>
+
+
+

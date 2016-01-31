@@ -20,6 +20,16 @@
         <controllerFile controllerName="Cadastrar">
           <actionMethod actionName="index"/>
         </controllerFile>
+        <controllerFile controllerName="Logar">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Ativar">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Atualizar">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="atualizar"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="LoginForm"/>
@@ -35,6 +45,7 @@
         </dbTableDirectory>
         <modelFile modelName="UserModelo"/>
         <modelFile modelName="UserDAO"/>
+        <modelFile modelName="Mail"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
@@ -54,6 +65,18 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Cadastrar">
             <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Logar">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Ativar">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Atualizar">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Atualizar">
+            <viewScriptFile forActionName="atualizar"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

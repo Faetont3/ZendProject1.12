@@ -4,18 +4,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
         <meta name="description" content="">
         <meta name="author" content="">
 
         <title>Zend Project</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="navbar.css" rel="stylesheet">
-        <link href="signin.css" rel="stylesheet">
-        <link href="sticky-footer.css" rel="stylesheet"              
+        <link href="<?= $this->baseURL() . '/css/bootstrap.min.css' ?>" rel="stylesheet">
+        
+        <link href="<?= $this->baseURL() . '/css/signin.css' ?>" rel="stylesheet">
+        <link href="<?= $this->baseURL() . '/css/sticky-footer.css' ?>" rel="stylesheet">              
     </head>
 
     <body>
@@ -31,9 +30,13 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>        
-    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="js/bootstrap.min.js"></script>-->
+    <script src="<?= $this->baseURL() . '/js/bootstrap.min.js' ?>"></script>
+    <script src="<?= $this->baseURL() . '/js/jquery.js' ?>"></script>
+    <script src="<?= $this->baseURL() . '/js/Modal.js' ?>"></script>
 
-    
+
+
 </body>
 </html>
 

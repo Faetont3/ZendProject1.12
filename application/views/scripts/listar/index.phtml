@@ -1,28 +1,48 @@
-<br /><br />
-<div id="view-content">
-    <p>View script for controller <b>Listar</b> and script/action name <b>index</b></p>
-    <h1>Hello2</h1>
-</div>
+<div class="container">
+    <div id="mensagens"></div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOME</th>
+                <th>EMAIL</th>
+                <th>SENHA</th>
+                <th>OPÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            
+            $auth = Zend_Auth::getInstance();
+            $result = $auth->getStorage()->read();
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>LOGIN</th>
-            <th>SENHA</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        foreach ($this->lista as $rows) {
-            echo '<tr>';
-            echo '<td>' . $rows->getId() . '</td>';
-            echo '<td>' . $rows->getLogin() . '</td>';
-            echo '<td>' . $rows->getSenha() . '</td>';
-            echo '<td><a href=' . $this->baseURL() . '/remover/index?dado=' . $rows->getId() . '>Remover</a></td>';
-            echo '<td><a href=' . $this->baseURL() . '/atualizar/index?dado=' . $rows->getId() . '>Alterar</a></td>';
-            echo '</tr>';
-        }
-        ?>
-    </tbody>
-</table>
+            foreach ($this->lista as $rows) {
+            ?>
+                <tr>
+                    <td><?php echo $rows->getId(); ?> </td>
+                    <td><?php echo $rows->getNome(); ?> </td>
+                    <td><?php echo $rows->getEmail(); ?> </td>
+                    <td><?php echo $rows->getSenha(); ?> </td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary ">Opções</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="<?= $this->baseUrl() . '/atualizar/index?id=' . $rows->getId(); ?>">Atualizar</a></li>
+                                <?php
+                                if ($result->role == 'admin') {
+                                ?>
+                                    <li><a onclick="remover(<?php echo $rows->getId(); ?>, this);">Remover</a></li>
+                                    
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+
+        </tbody>
+    </table>
+

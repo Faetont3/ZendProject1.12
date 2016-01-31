@@ -1,16 +1,42 @@
+<?php
+    $auth = Zend_Auth::getInstance();
+    $ok = $auth->hasIdentity();
+    $result = $auth->getStorage()->read();
+?>                    
+
 <div class="container">
     <!-- Static navbar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">                
-                <a class="navbar-brand" href="#">Zend Project</a>
+                <a class="navbar-brand" href="<?= $this->baseURL() . '/index' ?>">Zend Project</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="<?= $this->baseURL() . '/index' ?>">Home</a></li>
-                    <li><a href="<?= $this->baseURL() . '/cadastrar' ?>">Cadastro</a></li>
-                    <li><a href="<?= $this->baseURL() . '/listar' ?>">Listar Dados</a></li>
+                    <li><a href="<?= $this->baseURL() . '/index' ?>">Home</a></li>
+                    <?php
+                        if (!$ok){
+                    ?>
+                    <li><a href="javascript:Modal();">Cadastro</a></li>                                     
+                    <?php } ?>
+                    
+                    <?php                    
+                    if ($ok) {
+                    ?>
+                    <li><a href="<?= $this->baseURL() . '/listar' ?>">Listar Dados</a></li>    
+                    <li class="dropdown" id="usuario">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"  <span style="cursor: pointer">   
+                                <?php echo $result->nome; ?> <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Ver Dados</a></li>
+                            <li><a href="<?= $this->baseURL() . '/logar/logout'; ?>">Logout</a></li>
+                        </ul>
+                    </li>
+
+                    <?php } ?>
                 </ul>            
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
+
