@@ -20,10 +20,11 @@ class ListarController extends Zend_Controller_Action {
         if($result->role != 'admin'){
             $find[] = $dao->find($result->id);
             $this->view->lista = $find; 
-            $this->view->role = $role;
+            
         }else{            
             $this->view->lista = $dao->fetchAll();
-            $this->view->role = $role;
+           
         }
+         $this->view->role = $role;
     }
 }
