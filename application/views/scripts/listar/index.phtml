@@ -3,26 +3,27 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>ID</th>
+                <?php if($this->role){ ?>                
+                <th>ID</th> <?php } ?>
                 <th>NOME</th>
                 <th>EMAIL</th>
-                <th>SENHA</th>
+                <?php if($this->role){ ?>
+                <th>ROLE</th> <?php } ?>
+                <?php if($this->role){ ?>
+                <th>STATUS</th> <?php } ?> 
                 <th>OPÇÕES</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            
-            $auth = Zend_Auth::getInstance();
-            $result = $auth->getStorage()->read();
-
             foreach ($this->lista as $rows) {
             ?>
                 <tr>
-                    <td><?php echo $rows->getId(); ?> </td>
+                     <?php if($this->role){ ?>  <td><?php echo $rows->getId(); ?> </td> <?php } ?>
                     <td><?php echo $rows->getNome(); ?> </td>
                     <td><?php echo $rows->getEmail(); ?> </td>
-                    <td><?php echo $rows->getSenha(); ?> </td>
+                    <?php if($this->role){ ?>  <td><?php echo $rows->getRole(); ?> </td> <?php } ?>
+                    <?php if($this->role){ ?>  <td><?php echo $rows->getStatus(); ?> </td> <?php } ?>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary ">Opções</button>
@@ -32,7 +33,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="<?= $this->baseUrl() . '/atualizar/index?id=' . $rows->getId(); ?>">Atualizar</a></li>
                                 <?php
-                                if ($result->role == 'admin') {
+                                if ($this->role) {
                                 ?>
                                     <li><a onclick="remover(<?php echo $rows->getId(); ?>, this);">Remover</a></li>
                                     
@@ -40,6 +41,7 @@
                             </ul>
                         </div>
                     </td>
+                    
                 </tr>
             <?php } ?>
 

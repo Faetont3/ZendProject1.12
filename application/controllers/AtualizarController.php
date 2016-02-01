@@ -49,7 +49,6 @@ class AtualizarController extends Zend_Controller_Action {
                 return $this->_redirector->gotoUrl('/listar');
             
             else return $this->_redirector->gotoUrl('/listar');
-        }
-        
+        }        
     }
 }

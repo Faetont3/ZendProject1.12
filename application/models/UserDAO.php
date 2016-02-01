@@ -30,7 +30,9 @@ class Application_Model_UserDAO {
             $entry->setId($row->id)
                     ->setNome($row->nome)
                     ->setEmail($row->email)
-                    ->setSenha($row->senha);
+                    ->setSenha($row->senha)
+                    ->setRole($row->role)
+                    ->setStatus($row->status);
             $entries[] = $entry;
         }
         return $entries;
@@ -58,8 +60,7 @@ class Application_Model_UserDAO {
         else
             return false;
     }
-
-    //Modificar!!
+    
     public function atualiza(Application_Model_UserModelo $userModel) {
         $data = array(
             'nome'  => $userModel->getNome(),
